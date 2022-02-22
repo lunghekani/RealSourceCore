@@ -1,0 +1,104 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using RealSourceCore.Models
+@using RealSourceCore.Utility
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Real Source</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/lib/iconfonts/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/lib/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/css/style-melody.css">
+    <!-- endinject -->
+</head>
+<body>
+    <div class="container-scroller">
+        <!-- _navbarAdmin -->
+        <partial name="_Navbar" />
+        <!-- _navbarAdmin ends  -->
+        
+    <!-- page-body-wrapper -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_settings-panel.html -->
+            <partial name="_SidebarTheme" />
+            <!-- partial -->
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile">
+                        <div class="nav-link">
+                            <div class="profile-image">
+                                <img src="../images/faces/face5.jpg" alt="image" />
+                            </div>
+                            <div class="profile-name">
+                                <p class="name">
+                                    Welcome
+                                </p>
+                                <p class="designation">
+                                    @User.Identity.Name
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+                @if(User.IsInRole(Helper.Admin))
+                {
+                    <partial name="_SidebarAdmin" />
+                }
+                @if(User.IsInRole(Helper.Customer))
+                {
+                    <partial name="_SidebarCustomer" />
+                }
+                @if(User.IsInRole(Helper.Writer))
+                {
+                    <partial name="_SidebarWriter" />
+                }
+                </ul>
+
+            </nav>
+
+            <!-- partial ends-->
+            <!-- main-panel-->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                @RenderBody()
+            </div>
+            </div>
+            <!-- main-panel ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/main/lib/js/vendor.bundle.base.js"></script>
+    <script src="~/main/lib/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/main/js/off-canvas.js"></script>
+    <script src="~/main/js/hoverable-collapse.js"></script>
+    <script src="~/main/js/notify.min.js"></script>
+    <script src="~/main/js/misc.js"></script>
+    <script src="~/main/js/settings.js"></script>
+<!-- endinject -->
+
+<script src="~/main/js/dashboard.js"></script>
+@await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+
+
+</html>

@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using RealSourceCore.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav">
+    <li class="nav-item">
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+    </li>
+    <li class="nav-item">
+        @*<form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("LogOut", "Account", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+        </form>*@
+        <a  class="nav-link btn btn-link text-dark" asp-action="Logout" asp-controller="Account">Logout</a>
+    </li>
+    </ul>
+}
+else
+{
+    <li><a class="yewello-btn" asp-controller="Account" asp-action="Login" >Log In</a></li>
+    <li><a class="yewello-btn" asp-controller="Account" asp-action="Register">Register</a></li>
+    @*<li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>*@
+}
+

@@ -1,0 +1,112 @@
+﻿@model RealSourceCore.Models.ViewModels.RegisterVM
+
+@{
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+ <div class="row flex-grow">
+          <div class="col-lg-6 d-flex align-items-center justify-content-center">
+            <div class="auth-form-transparent text-left p-3">
+              <div class="brand-logo">
+                <img src="../img/logo/logo.svg" alt="logo">
+              </div>
+              <h4>New Here?</h4>
+              <h6 class="font-weight-light">Join us today! It takes only few steps</h6>
+              <form id="account" method="post" asp-action="Register" class="cmxform pt-3">
+                <fieldset>
+              <div asp-validation-summary="All" class="text-danger"></div>  
+                  <div class="form-group">
+                  <label for="exampleInputName" asp-for="Name"></label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="fa fa-user text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0 " id="exampleInputName" asp-for="Name" placeholder="John Doe">
+                  </div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail" asp-for="Email"></label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="fa fa-user text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="text" class="form-control form-control-lg border-left-0 " id="exampleInputEmail" asp-for="Email" placeholder="john.doe@email.com">
+                  </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword" asp-for="Password"></label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="fa fa-lock text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" asp-for="Password" placeholder="Password">
+                  </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword" asp-for="ConfirmPassword"></label>
+                  <div class="input-group">
+                    <div class="input-group-prepend bg-transparent">
+                      <span class="input-group-text bg-transparent border-right-0">
+                        <i class="fa fa-lock text-primary"></i>
+                      </span>
+                    </div>
+                    <input type="password" class="form-control form-control-lg border-left-0" id="exampleInputPassword" asp-for="ConfirmPassword" placeholder="Password">
+                  </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                  <label for="exampleInputPassword" asp-for="Role"></label>
+                  <div class="input-group">
+                    <select class="form-control form-control-lg" asp-for="Role" asp-items="@RealSourceCore.Utility.Helper.GetRolesForDropDown()"></select>
+                  </div>
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+                <div class="mb-4">
+                  <div class="form-check">
+                    <label class="form-check-label text-muted">
+                      <input type="checkbox" class="form-check-input">
+                      I agree to all <a asp-action="Privacy" asp-controller="Home">Terms & Conditions</a> 
+                    </label>
+                  </div>
+                </div>
+                <div class="my-3">
+                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="SIGN UP"/>
+              </div>
+              </fieldset>
+                @*<div class="mb-2 d-flex">
+                  <button type="button" class="btn btn-facebook auth-form-btn flex-grow mr-1">
+                    <i class="fab fa-facebook-f mr-2"></i>Facebook
+                  </button>
+                  <button type="button" class="btn btn-google auth-form-btn flex-grow ml-1">
+                    <i class="fab fa-google mr-2"></i>Google
+                  </button>
+                </div>*@
+                <div class="text-center mt-4 font-weight-light">
+                  already have an account? <a asp-action="Login" asp-controller="Account" class="text-primary">Login</a>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-lg-6 login-half-bg d-flex flex-row">
+            <p class="text-white font-weight-medium text-center flex-grow align-self-end">Copyright &copy; 2021  LLS ERP Solutions.</p>
+          </div>
+        </div>
+
+
+<script src="~/lib/js/vendor.bundle.base.js"></script>
+<script src="~/lib/js//vendor.bundle.addons.js"></script>
+<script src="~/js/form-validation.js"></script>
+<script src="~/js/bt-maxLength.js"></script>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial.cshtml" />
+}

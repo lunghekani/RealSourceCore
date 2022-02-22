@@ -1,0 +1,36 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Real Source</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/lib/iconfonts/font-awesome/css/all.min.css">
+    <link rel="stylesheet" href="~/lib/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/lib/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/css/style-melody.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/logo.ico" />
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-stretch auth auth-img-bg">
+                <div class="row flex-grow">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    @RenderSection("scripts", required: false)
+</body>
+</html>

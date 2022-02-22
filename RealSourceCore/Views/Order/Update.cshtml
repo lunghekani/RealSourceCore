@@ -1,0 +1,126 @@
+﻿@model RealSourceCore.Models.Order
+@{
+    ViewData["Title"] = "Update Order";
+    Layout = "_AppLayout";
+}
+
+<div class="col-12 grid-margin">
+    <div class="card">
+        <div class="card-body">
+                 
+            <form class="form-sample" method="post" asp-action="Update">
+                <input asp-for="Id" hidden=""/>
+                <input asp-for="CustomerName" hidden=""/>
+
+                <div class="row">
+                    @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Institution Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="InstitutionName"/>
+                                <span asp-validation-for="InstitutionName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Faculty</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="Faculty">
+                                    <option>Humanities & Social Sciences</option>
+                                    <option>Education</option>
+                                    <option>Commerce</option>
+                                    <option>Business &amp; Management</option>
+                                    <option>Law</option>
+                                    <option>Health Sciences</option>
+                                    <option>Engineering & Built Environment</option>
+                                    <option>Art</option>
+                                    <option>Design and Architecture</option>
+                                        
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Academic Level</label>
+                            <div class="col-sm-9">
+                                <select class="form-control" asp-for="AcademicLevel">
+                                    <option>High School</option>
+                                    <option>1st Year (Higher Certificate - NQF 5)</option>
+                                    <option>2nd Year (College Diploma - NQF 6)</option>
+                                    <option>3rd Year (Bachelor’s/B-Tech - NQF 7)</option>
+                                    <option>4th Year (Honours Degree - NQF 8)</option>
+                                    <option>Master’s (NQF 9)</option>
+                                    <option>PhD (NQF 10)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Course/Module Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" asp-for="ModuleName"/>
+                                <span asp-validation-for="ModuleName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Due Date</label>
+                            <div class="col-sm-9">
+                                <input class="form-control" type="date" placeholder="dd/mm/yyyy" asp-for="DueDate"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Number of Pages</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" asp-for="NoPages"/>
+                                <span asp-validation-for="NoPages" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Instructions</label>
+                            <div class="col-sm-9">
+                                <textarea class="form-control" id="exampleTextarea1" rows="4" asp-for="Instructions"></textarea>
+                                <span asp-validation-for="Instructions" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Assignment Docs</label>
+                            <div class="col-sm-9">
+                                <input type="file" name="img[]" class="file-upload-default" asp-for="FileAttached">
+                                <div class="input-group col-xs-12">
+                                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Document">
+                                    <span class="input-group-append">
+                                        <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                <a  asp-action="Index" class="btn btn-outline-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    @{ <partial name="_ValidationScriptsPartial"/>}
+}
